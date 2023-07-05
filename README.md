@@ -1,7 +1,7 @@
 # 🖥️ Atividade 2 do PB da Compass UOL
 
 <div align="center">
-  <img src="/src/logo-compass.png" width="350px">
+  <img src="/src/logo-compass.png" width="340px">
 </div>
 
 ### 👥 Integrantes do Grupo 2
@@ -42,7 +42,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 ##
 
 <div align="center">
-  <img src="/src/ec2-sg.jpeg" alt="Security Group para a EC2" width="725px">
+  <img src="/src/ec2-sg.jpeg" alt="Security Group para a EC2" width="765px">
    <p><em>Security Group para a EC2</em></p>
 </div>
 
@@ -56,7 +56,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 ##
 
 <div align="center">
-  <img src="/src/rds-sg.jpeg" alt="Security Group para o RDS" width="725px">
+  <img src="/src/rds-sg.jpeg" alt="Security Group para o RDS" width="765px">
    <p><em>Security Group para o RDS</em></p>
 </div>
 
@@ -70,7 +70,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 ##
 
 <div align="center">
-  <img src="/src/efs-sg.jpeg" alt="Security Group para o EFS" width="725px">
+  <img src="/src/efs-sg.jpeg" alt="Security Group para o EFS" width="765px">
    <p><em>Security Group para o EFS</em></p>
 </div>
 
@@ -136,7 +136,7 @@ O RDS armazenará os arquivos do container de WordPress, então antes de partirm
 + Vá em "Create Database"
 
 <div align="center">
-  <img src="/src/db-rds.jpeg" alt="Banco de Dados Criado" width="725px">
+  <img src="/src/db-rds.jpeg" alt="Banco de Dados Criado" width="765px">
    <p><em>Banco de Dados Criado</em></p>
 </div>
 
@@ -152,12 +152,12 @@ O EFS armazenará os arquivos estáticos do WordPress. Portanto, para criá-lo c
 + Na lista de "File systems" clique no nome do seu EFS e vá na seção "Network". Nessa parte vá no botão "Manage" e altere o SG para o que criamos no início especificamente para o EFS
 
 <div align="center">
-  <img src="/src/netw-efs.jpeg" alt="Seção de Network do EFS" width="725px">
+  <img src="/src/netw-efs.jpeg" alt="Seção de Network do EFS" width="765px">
    <p><em>Seção de Network do EFS</em></p>
 </div>
 
 <div align="center">
-  <img src="/src/netw2-efs.jpeg" alt="Janela de Mount targets do EFS" width="700px">
+  <img src="/src/netw2-efs.jpeg" alt="Janela de Mount targets do EFS" width="765px">
    <p><em>Janela de Mount targets do EFS</em></p>
 </div>
 
@@ -177,7 +177,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 + Na janela aberta selecione "Mount via DNS" e copie o comando de montagem usando o NFS client e cole no terminal da EC2: 
 
 <div align="center">
-  <img src="/src/attach-efs.jpeg" alt="Janela de Attach do EFS" width="725px">
+  <img src="/src/attach-efs.jpeg" alt="Janela de Attach do EFS" width="855px">
    <p><em>Janela de Attach do EFS</em></p>
 </div>
 
@@ -186,7 +186,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 + Para confirmar a montagem do EFS execute `` df -h `` 
 
 <div align="center">
-  <img src="/src/df-h.jpeg" alt="Saída do comando df -h" width="725px">
+  <img src="/src/df-h.jpeg" alt="Saída do comando df -h" width="785px">
    <p><em>Saída do comando df -h</em></p>
 </div>
 
@@ -197,7 +197,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 + Não exclua a linha que está no arquivo, apenas adicione: `` fs-0e220829bf4606496.efs.us-east-1.amazonaws.com:/    /mnt/efs    nfs4    defaults,_netdev,rw    0   0 ``, mas não se esqueça de alterar o DNS name para o do seu EFS
 
 <div align="center">
-  <img src="/src/fstab.jpeg" alt="Arquivo fstab" width="725px">
+  <img src="/src/fstab.jpeg" alt="Arquivo fstab" width="735px">
    <p><em>Arquivo fstab</em></p>
 </div>
 
@@ -232,14 +232,14 @@ services:
 2. Dessa forma o arquivo YAML está pronto para inicializar o container de WordPress, então execute o comando: `` docker-compose up -d `` 
 
 <div align="center">
-  <img src="/src/docker-compose-d.jpeg" alt="Subindo o container com o 'docker-compose up -d'" width="725px">
+  <img src="/src/docker-compose-d.jpeg" alt="Subindo o container com o 'docker-compose up -d'" width="755px">
    <p><em>Subindo o container com o 'docker-compose up -d'</em></p>
 </div>
 
 3. Para confirmar o armazenamento no EFS dos arquivos do WordPress gerados pelo Compose vá até o "/mnt/efs/":
 
 <div align="center">
-  <img src="/src/efs-wp.jpeg" alt="Arquivos do WP armazenados no EFS" width="725px">
+  <img src="/src/efs-wp.jpeg" alt="Arquivos do WP armazenados no EFS" width="755px">
    <p><em>Arquivos do WP armazenados no EFS</em></p>
 </div>
 

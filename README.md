@@ -205,6 +205,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 
 + Para confirmar novamente a montagem do EFS execute `` df -h ``
 
+
 ## 📄 Docker Compose - Criação do docker-compose.yml
 
 Para subirmos o container do WordPress devemos criar um arquivo .yml/.yaml com as seguintes instruções:
@@ -254,4 +255,81 @@ services:
 <div align="center">
   <img src="/src/mysql.jpeg" alt="Banco de Dados MySQL" width="600px">
    <p><em>Banco de Dados MySQL</em></p>
+</div>
+
+
+## ⚖️ ELB - Criando o Elastic Load Balancer
+
+Para fazer a ciação do LB devemos buscar pelo serviço de Load Balancer no console AWS, clicar no botão de "Create Load Balancer" e seguir os seguintes passos:
+
++ Escolha o tipo **"Application Load Balancer"**
+
+<div align="center">
+  <img src="/src/type-lb.jpeg" alt="Tipo de Load Balancer" width="600px">
+   <p><em>Seleção do Tipo de Load Balancer</em></p>
+</div>
+
++ Nomeie o seu ALB e na seção de Listeners configure para porta 80, protocólo HTTP. Abaixo você precisa selecionar pelo menos 2 AZs para garantir a disponibilidade da sua aplicação.
+
+<div align="center">
+  <img src="/src/conf-lb.jpeg" alt="Configurações do Application Load Balancer" width="600px">
+   <p><em>Configurações do Application Load Balancer</em></p>
+</div>
+
++ Na etapa de Security Group, crie um SG com o tipo HTTP e a porta 80.
+
+<div align="center">
+  <img src="/src/sgALB.jpeg" alt="Security Group do Application Load Balancer" width="600px">
+   <p><em>Security Group do Application Load Balancer</em></p>
+</div>
+
++ Na janela de Target Groups você deve configurar o roteamento, escolha o nome do Target Group e defina o tipo, a porta, protócolo e os Health checks
+
+<div align="center">
+  <img src="/src/target1.jpeg" alt="Configuração de Target Groups" width="600px">
+   <p><em>Configuração de Target Groups</em></p>
+</div>
+
+<div align="center">
+  <img src="/src/target2.jpeg" alt="Configuração dos Health checks" width="600px">
+   <p><em>Configuração dos Health checks</em></p>
+</div>
+
++ Na seguinte etapa você deve escolher a instância EC2 que está como host do seu container WordPress para ser o destino do ALB:
+
+<div align="center">
+  <img src="/src/chooseinstance.jpeg" alt="Seleção de Instância" width="600px">
+   <p><em>Seleção de Instância</em></p>
+</div>
+
++ Revise as suas configurações do ALB e clique em "Create". Com isso feito espere seu ALB ficar com o status de "Active" para prosseguir.
+
++ Vá no menu lateral esquerdo do console AWS e entre em "Target Groups" na seção do Load Balancer, se sua instância EC2 não estiver aparecendo na tela de "Registered targets" clique para registrar.
+
++ Na nova janela selecione sua EC2 host do WP e vá em "Include Pending Below", feito isso você notará que na parte de baixo estará mostrando qual EC2 foi selecionada e o status de Health como "pending". Feita essa seleção, clique em "Register pending Targets" e "Continue".
+
+<div align="center">
+  <img src="/src/pending.jpeg" alt="Target Group" width="600px">
+   <p><em>Target Group</em></p>
+</div>
+
++ Assim você já pode acessar o serviço WordPress através do DNS do Load Balancer 
+
+<div align="center">
+  <img src="/src/dns-lb.jpeg" alt="DNS Name do Load Balancer" width="600px">
+   <p><em>DNS Name do Load Balancer</em></p>
+</div>
+
+
+### 🔗 Referências: 
+
+- Deploy WordPress with Amazon RDS: https://aws.amazon.com/pt/getting-started/hands-on/deploy-wordpress-with-amazon-rds/module-one/
+- WordPress | Docker Official Images: https://hub.docker.com/_/wordpress
+- Amazon EC2 Masterclass (Auto Scaling & Load Balancer): https://udemy.com/course/aws-ec2-masterclass/
+- Deploy Dockerized WordPress with AWS RDS & AWS EFS: https://www.alphabold.com/deploy-dockerized-wordpress-with-aws-rds-aws-efs/
+
+##
+
+<div align="center">
+  <img src="/src/logo-compass.png" width="340px">
 </div>

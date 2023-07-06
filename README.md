@@ -262,7 +262,7 @@ services:
 
 ## ⚖️ ELB - Criando o Elastic Load Balancer
 
-Para fazer a ciação do LB devemos buscar pelo serviço de Load Balancer no console AWS, clicar no botão de "Create Load Balancer" e seguir os seguintes passos:
+Para fazer a criação do LB devemos buscar pelo serviço de Load Balancer no console AWS, clicar no botão de "Create Load Balancer" e seguir os seguintes passos:
 
 + Escolha o tipo **"Application Load Balancer"**
 
@@ -271,7 +271,7 @@ Para fazer a ciação do LB devemos buscar pelo serviço de Load Balancer no con
    <p><em>Seleção do Tipo de Load Balancer</em></p>
 </div>
 
-+ Nomeie o seu ALB e na seção de Listeners configure para porta 80, protocólo HTTP. Abaixo você precisa selecionar pelo menos 2 AZs para garantir a disponibilidade da sua aplicação.
++ Nomeie o seu ALB e na seção de Listeners configure para porta 80, protocolo HTTP. Abaixo você precisa selecionar pelo menos 2 AZs para garantir a disponibilidade da sua aplicação.
 
 <div align="center">
   <img src="/src/conf-lb.jpeg" alt="Configurações do Application Load Balancer" width="600px">
@@ -285,7 +285,7 @@ Para fazer a ciação do LB devemos buscar pelo serviço de Load Balancer no con
    <p><em>Security Group do Application Load Balancer</em></p>
 </div>
 
-+ Na janela de Target Groups você deve configurar o roteamento, escolha o nome do Target Group e defina o tipo, a porta, protócolo e os Health checks
++ Na janela de Target Groups você deve configurar o roteamento, escolha o nome do Target Group e defina o tipo, a porta, protocolo e os Health checks
 
 <div align="center">
   <img src="/src/target1.jpeg" alt="Configuração de Target Groups" width="600px">

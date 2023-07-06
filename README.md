@@ -4,6 +4,8 @@
   <img src="/src/logo-compass.png" width="340px">
 </div>
 
+##
+
 ### 👥 Integrantes do Grupo 2
 
 - Carolina Freitas

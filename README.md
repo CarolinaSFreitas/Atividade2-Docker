@@ -26,7 +26,7 @@
 4. Configuração do serviço de Load Balancer AWS para a aplicação Wordpress
 
 <div align="center">
-  <img src="/src/arq.jpg" alt="Arquitetura" width="625px">
+  <img src="/src/arq.jpg" alt="Arquitetura" width="690px">
    <p><em>Arquitetura</em></p>
 </div>
 
@@ -44,7 +44,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 ##
 
 <div align="center">
-  <img src="/src/ec2-sg.jpeg" alt="Security Group para a EC2" width="765px">
+  <img src="/src/ec2-sg.jpeg" alt="Security Group para a EC2" width="850px">
    <p><em>Security Group para a EC2</em></p>
 </div>
 
@@ -58,7 +58,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 ##
 
 <div align="center">
-  <img src="/src/rds-sg.jpeg" alt="Security Group para o RDS" width="765px">
+  <img src="/src/rds-sg.jpeg" alt="Security Group para o RDS" width="850px">
    <p><em>Security Group para o RDS</em></p>
 </div>
 
@@ -72,7 +72,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 ##
 
 <div align="center">
-  <img src="/src/efs-sg.jpeg" alt="Security Group para o EFS" width="765px">
+  <img src="/src/efs-sg.jpeg" alt="Security Group para o EFS" width="850px">
    <p><em>Security Group para o EFS</em></p>
 </div>
 
@@ -138,7 +138,7 @@ O RDS armazenará os arquivos do container de WordPress, então antes de partirm
 + Vá em "Create Database"
 
 <div align="center">
-  <img src="/src/db-rds.jpeg" alt="Banco de Dados Criado" width="765px">
+  <img src="/src/db-rds.jpeg" alt="Banco de Dados Criado" width="850px">
    <p><em>Banco de Dados Criado</em></p>
 </div>
 
@@ -154,12 +154,12 @@ O EFS armazenará os arquivos estáticos do WordPress. Portanto, para criá-lo c
 + Na lista de "File systems" clique no nome do seu EFS e vá na seção "Network". Nessa parte vá no botão "Manage" e altere o SG para o que criamos no início especificamente para o EFS
 
 <div align="center">
-  <img src="/src/netw-efs.jpeg" alt="Seção de Network do EFS" width="765px">
+  <img src="/src/netw-efs.jpeg" alt="Seção de Network do EFS" width="795px">
    <p><em>Seção de Network do EFS</em></p>
 </div>
 
 <div align="center">
-  <img src="/src/netw2-efs.jpeg" alt="Janela de Mount targets do EFS" width="765px">
+  <img src="/src/netw2-efs.jpeg" alt="Janela de Mount targets do EFS" width="785px">
    <p><em>Janela de Mount targets do EFS</em></p>
 </div>
 
@@ -179,7 +179,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 + Na janela aberta selecione "Mount via DNS" e copie o comando de montagem usando o NFS client e cole no terminal da EC2: 
 
 <div align="center">
-  <img src="/src/attach-efs.jpeg" alt="Janela de Attach do EFS" width="855px">
+  <img src="/src/attach-efs.jpeg" alt="Janela de Attach do EFS" width="875px">
    <p><em>Janela de Attach do EFS</em></p>
 </div>
 
@@ -188,7 +188,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 + Para confirmar a montagem do EFS execute `` df -h `` 
 
 <div align="center">
-  <img src="/src/df-h.jpeg" alt="Saída do comando df -h" width="785px">
+  <img src="/src/df-h.jpeg" alt="Saída do comando df -h" width="835px">
    <p><em>Saída do comando df -h</em></p>
 </div>
 
@@ -199,7 +199,7 @@ Esse caminho é muito importante e você pode conferir se ele foi criado com suc
 + Não exclua a linha que está no arquivo, apenas adicione: `` fs-0e220829bf4606496.efs.us-east-1.amazonaws.com:/    /mnt/efs    nfs4    defaults,_netdev,rw    0   0 ``, mas não se esqueça de alterar o DNS name para o do seu EFS
 
 <div align="center">
-  <img src="/src/fstab.jpeg" alt="Arquivo fstab" width="735px">
+  <img src="/src/fstab.jpeg" alt="Arquivo fstab" width="755px">
    <p><em>Arquivo fstab</em></p>
 </div>
 
@@ -235,14 +235,14 @@ services:
 2. Dessa forma o arquivo YAML está pronto para inicializar o container de WordPress, então execute o comando: `` docker-compose up -d `` 
 
 <div align="center">
-  <img src="/src/docker-compose-d.jpeg" alt="Subindo o container com o 'docker-compose up -d'" width="755px">
+  <img src="/src/docker-compose-d.jpeg" alt="Subindo o container com o 'docker-compose up -d'" width="800px">
    <p><em>Subindo o container com o 'docker-compose up -d'</em></p>
 </div>
 
 3. Para confirmar o armazenamento no EFS dos arquivos do WordPress gerados pelo Compose vá até o "/mnt/efs/":
 
 <div align="center">
-  <img src="/src/efs-wp.jpeg" alt="Arquivos do WP armazenados no EFS" width="755px">
+  <img src="/src/efs-wp.jpeg" alt="Arquivos do WP armazenados no EFS" width="800px">
    <p><em>Arquivos do WP armazenados no EFS</em></p>
 </div>
 
@@ -267,40 +267,40 @@ Para fazer a criação do LB devemos buscar pelo serviço de Load Balancer no co
 + Escolha o tipo **"Application Load Balancer"**
 
 <div align="center">
-  <img src="/src/type-lb.jpeg" alt="Tipo de Load Balancer" width="600px">
+  <img src="/src/type-lb.jpeg" alt="Tipo de Load Balancer" width="710px">
    <p><em>Seleção do Tipo de Load Balancer</em></p>
 </div>
 
 + Nomeie o seu ALB e na seção de Listeners configure para porta 80, protocolo HTTP. Abaixo você precisa selecionar pelo menos 2 AZs para garantir a disponibilidade da sua aplicação.
 
 <div align="center">
-  <img src="/src/conf-lb.jpeg" alt="Configurações do Application Load Balancer" width="600px">
+  <img src="/src/conf-lb.jpeg" alt="Configurações do Application Load Balancer" width="710px">
    <p><em>Configurações do Application Load Balancer</em></p>
 </div>
 
 + Na etapa de Security Group, crie um SG com o tipo HTTP e a porta 80.
 
 <div align="center">
-  <img src="/src/sgALB.jpeg" alt="Security Group do Application Load Balancer" width="600px">
+  <img src="/src/sgALB.jpeg" alt="Security Group do Application Load Balancer" width="710px">
    <p><em>Security Group do Application Load Balancer</em></p>
 </div>
 
 + Na janela de Target Groups você deve configurar o roteamento, escolha o nome do Target Group e defina o tipo, a porta, protocolo e os Health checks
 
 <div align="center">
-  <img src="/src/target1.jpeg" alt="Configuração de Target Groups" width="600px">
+  <img src="/src/target1.jpeg" alt="Configuração de Target Groups" width="710px">
    <p><em>Configuração de Target Groups</em></p>
 </div>
 
 <div align="center">
-  <img src="/src/target2.jpeg" alt="Configuração dos Health checks" width="600px">
+  <img src="/src/target2.jpeg" alt="Configuração dos Health checks" width="710px">
    <p><em>Configuração dos Health checks</em></p>
 </div>
 
 + Na seguinte etapa você deve escolher a instância EC2 que está como host do seu container WordPress para ser o destino do ALB:
 
 <div align="center">
-  <img src="/src/chooseinstance.jpeg" alt="Seleção de Instância" width="600px">
+  <img src="/src/chooseinstance.jpeg" alt="Seleção de Instância" width="710px">
    <p><em>Seleção de Instância</em></p>
 </div>
 
@@ -311,14 +311,14 @@ Para fazer a criação do LB devemos buscar pelo serviço de Load Balancer no co
 + Na nova janela selecione sua EC2 host do WP e vá em "Include Pending Below", feito isso você notará que na parte de baixo estará mostrando qual EC2 foi selecionada e o status de Health como "pending". Feita essa seleção, clique em "Register pending Targets" e "Continue".
 
 <div align="center">
-  <img src="/src/pending.jpeg" alt="Target Group" width="600px">
+  <img src="/src/pending.jpeg" alt="Target Group" width="710px">
    <p><em>Target Group</em></p>
 </div>
 
 + Assim você já pode acessar o serviço WordPress através do DNS do Load Balancer 
 
 <div align="center">
-  <img src="/src/dns-lb.jpeg" alt="DNS Name do Load Balancer" width="600px">
+  <img src="/src/dns-lb.jpeg" alt="DNS Name do Load Balancer" width="710px">
    <p><em>DNS Name do Load Balancer</em></p>
 </div>
 

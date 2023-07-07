@@ -37,10 +37,10 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 
 + O SG da EC2 deve conter as seguintes Inbound Rules:
 
-| Type         | Protocol | Port Range | Source Type | Source      |
-|--------------|----------|------------|-------------|-------------|
-| SSH          | TCP      | 22         | Anywhere    | 0.0.0.0/0   |
-| HTTP         | TCP      | 80         | Anywhere    | 0.0.0.0/0   |
+  | Type         | Protocol | Port Range | Source Type | Source      |
+  |--------------|----------|------------|-------------|-------------|
+  | SSH          | TCP      | 22         | Anywhere    | 0.0.0.0/0   |
+  | HTTP         | TCP      | 80         | Anywhere    | 0.0.0.0/0   |
 ##
 
 <div align="center">
@@ -52,9 +52,9 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 
 + O SG do RDS deve conter a seguinte Inbound Rule:
 
-| Type         | Protocol | Port Range | Source Type | Source      |
-|--------------|----------|------------|-------------|-------------|
-| MYSQL/Aurora | TCP      | 3306       | Anywhere    | 0.0.0.0/0   |
+  | Type         | Protocol | Port Range | Source Type | Source      |
+  |--------------|----------|------------|-------------|-------------|
+  | MYSQL/Aurora | TCP      | 3306       | Anywhere    | 0.0.0.0/0   |
 ##
 
 <div align="center">
@@ -66,9 +66,9 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
 
 + O SG do EFS deve conter a seguinte Inbound Rule:
 
-| Type         | Protocol | Port Range | Source Type | Source      |
-|--------------|----------|------------|-------------|-------------|
-| NFS          | TCP      | 2049       | Anywhere    | 0.0.0.0/0   |
+  | Type         | Protocol | Port Range | Source Type | Source      |
+  |--------------|----------|------------|-------------|-------------|
+  | NFS          | TCP      | 2049       | Anywhere    | 0.0.0.0/0   |
 ##
 
 <div align="center">

@@ -232,7 +232,7 @@ services:
       WORDPRESS_TABLE_CONFIG: wp_
 ```
 
-2. Dessa forma o arquivo YAML está pronto para inicializar o container de WordPress, então execute o comando: `` docker-compose up -d `` 
+2. Dessa forma o arquivo YAML está pronto para inicializar o container de WordPress, então execute o comando: `` docker-compose up -d `` e depois use o comando `` docker ps `` para mostrar o container inicializado.
 
 <div align="center">
   <img src="/src/docker-compose-d.jpeg" alt="Subindo o container com o 'docker-compose up -d'" width="800px">
@@ -250,7 +250,7 @@ services:
 
 + `` docker exec -it <ID_DO_CONTAINER_WORDPRESS> /bin/bash `` 
 
-+ Dentro do container WordPress execute: ``apt-get update`` e depois `` apt-get install default-mysql-client``.
++ Dentro do container WordPress execute: ``apt-get update`` e depois `` apt-get install default-mysql-client -y ``.
 
 + Agora use o comando: `` mysql -h <ENDPOINT_DO_SEU_RDS> -P 3306 -u admin -p `` para entrar no banco de dados MySQL com as mesmas credenciais do seu RDS.
 
@@ -314,6 +314,8 @@ Para fazer a criação do LB devemos buscar pelo serviço de Load Balancer no co
   <img src="/src/pending.jpeg" alt="Target Group" width="710px">
    <p><em>Target Group</em></p>
 </div>
+
++ Para garantir a disponibilidade da sua aplicação, não esqueça de criar um clone da sua EC2 host do WordPress para que ela seja usada como segunda opção no Load Balancer na outra AZ.
 
 + Assim você já pode acessar o serviço WordPress através do DNS do Load Balancer 
 

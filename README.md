@@ -41,7 +41,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
   |--------------|----------|------------|-------------|-------------|
   | SSH          | TCP      | 22         | Anywhere    | 0.0.0.0/0   |
   | HTTP         | TCP      | 80         | Anywhere    | 0.0.0.0/0   |
-##
+
 
 <div align="center">
   <img src="/src/ec2-sg.jpeg" alt="Security Group para a EC2" width="850px">
@@ -55,7 +55,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
   | Type         | Protocol | Port Range | Source Type | Source      |
   |--------------|----------|------------|-------------|-------------|
   | MYSQL/Aurora | TCP      | 3306       | Anywhere    | 0.0.0.0/0   |
-##
+
 
 <div align="center">
   <img src="/src/rds-sg.jpeg" alt="Security Group para o RDS" width="850px">
@@ -69,7 +69,7 @@ Antes de iniciarmos a criação da EC2, do RDS e do EFS, devemos criar os Securi
   | Type         | Protocol | Port Range | Source Type | Source      |
   |--------------|----------|------------|-------------|-------------|
   | NFS          | TCP      | 2049       | Anywhere    | 0.0.0.0/0   |
-##
+
 
 <div align="center">
   <img src="/src/efs-sg.jpeg" alt="Security Group para o EFS" width="850px">
